@@ -6,17 +6,15 @@ import './App.css';
 class App extends Component {
 
   onClick(event) {
+    console.log(event);
     console.log(this);
   }
 
   onMouseOver() {
     console.log(this);
-
   }
 
   onMouseLeave() {
-    // console.log(this);
-    // this.fill = "blueTile";
   }
 
   render() {
@@ -42,18 +40,17 @@ class App extends Component {
     console.log(starting_grid);
 
     return (
-
       <div className="App">
-					<HexGrid width={1200} height={800}>
-				    {/* Grid with manually inserted hexagons */}
-            <Layout size={hexagonSize} flat={false} spacing={1.1} origin={{ x: 0, y: 0 }}>
-              {starting_grid.map((pair, index) => {
-                var hexid="hexagon-"+index;
-                return(<Hexagon id={hexid} key={index} className="yellowShipTile" q={pair[0]} r={pair[1]} s={0} onClick={this.onClick.bind(this)} />);
-              })}
-            </Layout>
-				  </HexGrid>
-				</div>
+        <HexGrid width={1200} height={800}>
+        {/* Grid with manually inserted hexagons */}
+          <Layout size={hexagonSize} flat={false} spacing={1.1} origin={{ x: 0, y: 0 }}>
+            {starting_grid.map((pair, index) => {
+            var hexid="hexagon-"+index;
+            return(<Hexagon id={hexid} key={hexid} className="yellowShipTile" q={pair[0]} r={pair[1]} s={0} onClick={this.onClick.bind(this)} />);
+            })}
+          </Layout>
+        </HexGrid>
+      </div>
     );
   }
 }
